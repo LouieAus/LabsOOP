@@ -14,7 +14,7 @@ namespace frac
 		long long numerator_;	// Числитель
 		long long denominator_;	// Знаменатель
 	public:
-		
+
 		Fraction() = delete;
 		Fraction(long num, long denum);
 		~Fraction();
@@ -70,7 +70,7 @@ namespace frac
 		static bool isGreater(double a, Fraction b) noexcept;
 		static bool isSmaller(Fraction a, Fraction b) noexcept;
 		static bool isSmaller(double a, Fraction b) noexcept;
-		
+
 
 		// --- Перегрузки операторов ---
 
