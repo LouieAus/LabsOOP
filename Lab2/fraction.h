@@ -4,14 +4,17 @@
 
 namespace frac
 {
+	struct MixedFraction;
+
 	// Класс дробей
 	// (реализации методов находятся в fraction.cpp)
 	class Fraction
 	{
 	private:
-		long numerator_;	// Числитель
-		long denominator_;	// Знаменатель
+		long long numerator_;	// Числитель
+		long long denominator_;	// Знаменатель
 	public:
+		
 		Fraction() = delete;
 		Fraction(long num, long denum);
 		~Fraction();
@@ -49,6 +52,10 @@ namespace frac
 
 		// Функция перевода числа в дробь
 		static Fraction NumToFrac(double a) noexcept;
+		// Функция перевода дроби в число
+		double FracToNum() const noexcept;
+		// Функция перевода дроби в смешанную дробь
+		MixedFraction FracToMixedFrac() const noexcept;
 
 		// Функции проверки на идентичность
 		static bool AreEqual(Fraction a, Fraction b) noexcept;
@@ -59,8 +66,10 @@ namespace frac
 		static Fraction GetSmallest(Fraction a, Fraction b) noexcept;
 
 		// Функции сравнения
-		static bool isGreater(Fraction& a, Fraction& b) noexcept;
-		static bool isSmaller(Fraction& a, Fraction& b) noexcept;
+		static bool isGreater(Fraction a, Fraction b) noexcept;
+		static bool isGreater(double a, Fraction b) noexcept;
+		static bool isSmaller(Fraction a, Fraction b) noexcept;
+		static bool isSmaller(double a, Fraction b) noexcept;
 		
 
 		// --- Перегрузки операторов ---
@@ -100,5 +109,12 @@ namespace frac
 		bool operator<= (Fraction frac) noexcept;
 		bool operator<= (double frac) noexcept;
 		friend bool operator<= (double frac1, Fraction frac2) noexcept;
+	};
+
+	// Структура смешанной дроби
+	struct MixedFraction
+	{
+		long long integer = 0;
+		Fraction fract{ 0, 0 };
 	};
 }

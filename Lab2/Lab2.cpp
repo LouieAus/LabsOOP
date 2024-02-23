@@ -11,9 +11,10 @@
 
 int main()
 {
-	frac::Fraction number1 (1, 2);
-	frac::Fraction number2 (1000, 1000);
-	double num = 0.5;
+	frac::Fraction number1 (333, 5);
 
-	std::cout << (1.0 == frac::Fraction::GetBiggest(number1, number2));
+	frac::MixedFraction fr = number1.FracToMixedFrac();
+
+	std::cout << fr.integer << " ";
+	fr.fract.Print();
 }

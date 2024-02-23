@@ -175,6 +175,28 @@ namespace frac
 		return frac;
 	}
 
+	double Fraction::FracToNum() const noexcept
+	{
+		return ((double)this->numerator_ / (double)this->denominator_);
+	}
+
+	MixedFraction Fraction::FracToMixedFrac() const noexcept
+	{
+		MixedFraction result;
+		result.fract.denominator_ = this->denominator_;
+
+		long long temp_num = this->numerator_;
+
+		while (temp_num - this->denominator_ >= 0)
+		{
+			temp_num -= this->denominator_;
+			result.integer++;
+		}
+
+		result.fract.numerator_ = temp_num;
+		return result;
+	}
+
 	bool Fraction::AreEqual(Fraction a, Fraction b) noexcept
 	{
 		a.Reduce();
@@ -215,14 +237,24 @@ namespace frac
 		return (num_a < num_b ? a : b);
 	}
 
-	bool Fraction::isGreater(Fraction& a, Fraction& b) noexcept
+	bool Fraction::isGreater(Fraction a, Fraction b) noexcept
 	{
 		return (a == GetBiggest(a, b) ? true : false);
 	}
 
-	bool Fraction::isSmaller(Fraction& a, Fraction& b) noexcept
+	bool Fraction::isGreater(double a, Fraction b) noexcept
+	{
+		return isGreater(NumToFrac(a), b);
+	}
+
+	bool Fraction::isSmaller(Fraction a, Fraction b) noexcept
 	{
 		return (a == GetSmallest(a, b) ? true : false);;
+	}
+
+	bool frac::Fraction::isSmaller(double a, Fraction b) noexcept
+	{
+		return isSmaller(NumToFrac(a), b);
 	}
 
 	Fraction Fraction::operator+(Fraction& frac) noexcept		{ return Summation(*this, frac); }
@@ -259,4 +291,31 @@ namespace frac
 
 	bool operator==(double frac1, Fraction frac2) noexcept		{ return Fraction::AreEqual(frac2, frac1); }
 
+
+	bool Fraction::operator> (Fraction frac) noexcept			{ return isGreater(*this, frac); }
+
+	bool Fraction::operator>(double frac) noexcept				{ return isSmaller(frac, *this); }
+
+	bool operator>(double frac1, Fraction frac2) noexcept		{ return Fraction::isGreater(frac1, frac2); }
+
+
+	bool Fraction::operator<(Fraction frac) noexcept			{ return isSmaller(*this, frac); }
+
+	bool Fraction::operator<(double frac) noexcept				{ return isGreater(frac, *this); }
+
+	bool operator<(double frac1, Fraction frac2) noexcept		{ return Fraction::isSmaller(frac1, frac2); }
+
+
+	bool Fraction::operator>= (Fraction frac) noexcept			{ return (!isSmaller(*this, frac)); }
+
+	bool Fraction::operator>=(double frac) noexcept				{ return (!isGreater(frac, *this)); }
+
+	bool operator>=(double frac1, Fraction frac2) noexcept		{ return (!Fraction::isSmaller(frac1, frac2)); }
+
+
+	bool Fraction::operator<= (Fraction frac) noexcept			{ return (!isGreater(*this, frac)); }
+
+	bool Fraction::operator<=(double frac) noexcept				{ return (!isSmaller(frac, *this)); }
+
+	bool operator<=(double frac1, Fraction frac2) noexcept		{ return (!Fraction::isGreater(frac1, frac2)); }
 }
