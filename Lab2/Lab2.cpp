@@ -11,10 +11,49 @@
 
 int main()
 {
-	frac::Fraction number1 (333, 5);
+	frac::Fraction num1(33, 10);
+	frac::Fraction num2(99, 520);
 
-	frac::MixedFraction fr = number1.FracToMixedFrac();
+	frac::Fraction temp(1, 1);
 
-	std::cout << fr.integer << " ";
-	fr.fract.Print();
+	// --- Примеры ---
+
+	// Метод сложения
+	temp = frac::Fraction::Summation(num1, num2);
+	temp = num1 + num2;
+
+	// Метод вычитания
+	temp = frac::Fraction::Subtraction(num1, num2);
+	temp = num1 - num2;
+
+	// Метод умножения
+	temp = frac::Fraction::Multiplication(num1, num2);
+	temp = num1 * num2;
+
+	// Метод деления
+	temp = frac::Fraction::Division(num1, num2);
+	temp = num1 / num2;
+
+	bool result;
+	// Методы сравнения
+	result = frac::Fraction::AreEqual(num1, num2);
+	result = frac::Fraction::isGreater(num1, num2);
+	result = frac::Fraction::isSmaller(num1, num2);
+
+	result = (num1 == num2);
+	result = (num1 < num2);
+	result = (num1 > num2);
+	result = (num1 <= num2);
+	result = (num1 >= num2);
+
+	// Методы преобразования
+	// Из натуральной дроби в число
+	double a = num1.FracToNum();
+	// Из числа в натуральную дробь
+	temp = frac::Fraction::NumToFrac(5.7f);
+	// Из натуральной дроби в смешанную
+	frac::MixedFraction mixed = num1.FracToMixedFrac();
+
+	// Метод сокращения дроби
+	num1.Reduce();
 }
