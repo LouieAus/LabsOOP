@@ -6,73 +6,74 @@ namespace frac
 {
 	struct MixedFraction;
 
-	// Класс дробей
-	// (реализации методов находятся в fraction.cpp)
+	// ГЉГ«Г Г±Г± Г¤Г°Г®ГЎГҐГ©
+	// (Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГЁ Г¬ГҐГІГ®Г¤Г®Гў Г­Г ГµГ®Г¤ГїГІГ±Гї Гў fraction.cpp)
 	class Fraction
 	{
 	private:
-		long long numerator_;	// Числитель
-		long long denominator_;	// Знаменатель
+		long long numerator_;	// Г—ГЁГ±Г«ГЁГІГҐГ«Гј
+		long long denominator_;	// Г‡Г­Г Г¬ГҐГ­Г ГІГҐГ«Гј
 	public:
 		
 		Fraction() = delete;
 		Fraction(long num, long denum);
 		~Fraction();
 
-		// Геттеры
+		// ГѓГҐГІГІГҐГ°Г»
 		long GetNum() const noexcept;
 		long GetDenom() const noexcept;
 
-		// Сеттеры
+		// Г‘ГҐГІГІГҐГ°Г»
 		void SetNum(long num) noexcept;
 		void SetDenom(long denom) noexcept;
 
-		// Функция сокращения дроби
+		// Г”ГіГ­ГЄГ¶ГЁГї Г±Г®ГЄГ°Г Г№ГҐГ­ГЁГї Г¤Г°Г®ГЎГЁ
 		void Reduce() noexcept;
-		// Функция вывода дроби
+		// Г”ГіГ­ГЄГ¶ГЁГї ГўГ»ГўГ®Г¤Г  Г¤Г°Г®ГЎГЁ
 		void Print() const noexcept;
 
-		// Функции суммирования
+		// Г”ГіГ­ГЄГ¶ГЁГЁ Г±ГіГ¬Г¬ГЁГ°Г®ГўГ Г­ГЁГї
 		static Fraction Summation(Fraction& a, Fraction& b) noexcept;
 		static Fraction Summation(double a, Fraction& b) noexcept;
 
-		// Функции вычитания
+		// Г”ГіГ­ГЄГ¶ГЁГЁ ГўГ»Г·ГЁГІГ Г­ГЁГї
 		static Fraction Subtraction(Fraction& a, Fraction& b) noexcept;
 		static Fraction Subtraction(double a, Fraction& b) noexcept;
 		static Fraction Subtraction(Fraction& a, double b) noexcept;
 
-		// Функции умножения
+		// Г”ГіГ­ГЄГ¶ГЁГЁ ГіГ¬Г­Г®Г¦ГҐГ­ГЁГї
 		static Fraction Multiplication(Fraction& a, Fraction& b) noexcept;
 		static Fraction Multiplication(double a, Fraction& b) noexcept;
 
-		// Функции деления
+		// Г”ГіГ­ГЄГ¶ГЁГЁ Г¤ГҐГ«ГҐГ­ГЁГї
 		static Fraction Division(Fraction& a, Fraction& b);
 		static Fraction Division(double a, Fraction& b);
 		static Fraction Division(Fraction& a, double b);
 
-		// Функция перевода числа в дробь
+		// Г”ГіГ­ГЄГ¶ГЁГї ГЇГҐГ°ГҐГўГ®Г¤Г  Г·ГЁГ±Г«Г  Гў Г¤Г°Г®ГЎГј
 		static Fraction NumToFrac(double a) noexcept;
-		// Функция перевода дроби в число
+		// Г”ГіГ­ГЄГ¶ГЁГї ГЇГҐГ°ГҐГўГ®Г¤Г  Г¤Г°Г®ГЎГЁ Гў Г·ГЁГ±Г«Г®
 		double FracToNum() const noexcept;
-		// Функция перевода дроби в смешанную дробь
+		// Г”ГіГ­ГЄГ¶ГЁГї ГЇГҐГ°ГҐГўГ®Г¤Г  Г¤Г°Г®ГЎГЁ Гў Г±Г¬ГҐГёГ Г­Г­ГіГѕ Г¤Г°Г®ГЎГј
 		MixedFraction FracToMixedFrac() const noexcept;
 
-		// Функции проверки на идентичность
+		// Г”ГіГ­ГЄГ¶ГЁГЁ ГЇГ°Г®ГўГҐГ°ГЄГЁ Г­Г  ГЁГ¤ГҐГ­ГІГЁГ·Г­Г®Г±ГІГј
 		static bool AreEqual(Fraction a, Fraction b) noexcept;
 		static bool AreEqual(Fraction a, double b) noexcept;
 
-		// Функции получения большего/меньшего числа
+		// Г”ГіГ­ГЄГ¶ГЁГЁ ГЇГ®Г«ГіГ·ГҐГ­ГЁГї ГЎГ®Г«ГјГёГҐГЈГ®/Г¬ГҐГ­ГјГёГҐГЈГ® Г·ГЁГ±Г«Г 
 		static Fraction GetBiggest(Fraction a, Fraction b) noexcept;
 		static Fraction GetSmallest(Fraction a, Fraction b) noexcept;
 
-		// Функции сравнения
+		// Г”ГіГ­ГЄГ¶ГЁГЁ Г±Г°Г ГўГ­ГҐГ­ГЁГї
 		static bool isGreater(Fraction a, Fraction b) noexcept;
 		static bool isGreater(double a, Fraction b) noexcept;
 		static bool isSmaller(Fraction a, Fraction b) noexcept;
 		static bool isSmaller(double a, Fraction b) noexcept;
 		
 
-		// --- Перегрузки операторов ---
+
+		// --- ГЏГҐГ°ГҐГЈГ°ГіГ§ГЄГЁ Г®ГЇГҐГ°Г ГІГ®Г°Г®Гў ---
 
 		Fraction operator+ (Fraction& frac) noexcept;
 		Fraction operator+ (double frac) noexcept;
@@ -111,7 +112,7 @@ namespace frac
 		friend bool operator<= (double frac1, Fraction frac2) noexcept;
 	};
 
-	// Структура смешанной дроби
+	// Г‘ГІГ°ГіГЄГІГіГ°Г  Г±Г¬ГҐГёГ Г­Г­Г®Г© Г¤Г°Г®ГЎГЁ
 	struct MixedFraction
 	{
 		long long integer = 0;
