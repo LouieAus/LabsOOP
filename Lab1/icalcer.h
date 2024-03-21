@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include <optional>
 #include <iostream>
@@ -7,18 +7,18 @@ namespace calc
 {
 	typedef unsigned int UINT;
 
-	// Класс ICalcer
+	// РљР»Р°СЃСЃ ICalcer
 	class ICalcer
 	{
 	protected:
-		UINT	dot_quantity_;	// Количество точек
-		double	increment_;		// Шаг
-		double	accuracy_;		// Точность
+		UINT	dot_quantity_;	// РљРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕС‡РµРє
+		double	increment_;		// РЁР°Рі
+		double	accuracy_;		// РўРѕС‡РЅРѕСЃС‚СЊ
 
 		double GetIncrement(double a, double b, UINT n = 0) const noexcept;
 		UINT GetDotQuantity(double a, double b, double inc = 0.0) const noexcept;
 	public:
-		// Функция вычисления интеграла (указатель на функцию, левая граница, правая граница)
+		// Р¤СѓРЅРєС†РёСЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РёРЅС‚РµРіСЂР°Р»Р° (СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ, Р»РµРІР°СЏ РіСЂР°РЅРёС†Р°, РїСЂР°РІР°СЏ РіСЂР°РЅРёС†Р°)
 		virtual std::optional<double> calcInt(double(*func)(double), double a, double b) noexcept = 0;
 
 		ICalcer();
@@ -28,7 +28,7 @@ namespace calc
 		virtual ~ICalcer() {}
 	};
 
-	// Класс TrapezeCalcer с расчетом интеграла через метод трапеций
+	// РљР»Р°СЃСЃ TrapezeCalcer СЃ СЂР°СЃС‡РµС‚РѕРј РёРЅС‚РµРіСЂР°Р»Р° С‡РµСЂРµР· РјРµС‚РѕРґ С‚СЂР°РїРµС†РёР№
 	class TrapezeCalcer : public ICalcer 
 	{
 	private:
@@ -40,7 +40,7 @@ namespace calc
 		std::optional<double> calcInt(double(*func)(double), double a, double b) noexcept override;
 	};
 
-	// Класс TrapezeCalcer с расчетом интеграла через метод Симпсона
+	// РљР»Р°СЃСЃ TrapezeCalcer СЃ СЂР°СЃС‡РµС‚РѕРј РёРЅС‚РµРіСЂР°Р»Р° С‡РµСЂРµР· РјРµС‚РѕРґ РЎРёРјРїСЃРѕРЅР°
 	class SimpsonCalcer : public ICalcer
 	{
 	private:
